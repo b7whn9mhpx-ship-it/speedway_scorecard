@@ -1,7 +1,7 @@
 /**
  * Speedway Scorecard - Interactive Heat Scoring View
  * Handles rapid 1-tap position entry (1, 2, 3, 4, EX), helmet display,
-* substitutions, race time, and smooth heat-to-heat navigation.
+ * substitutions, race time, and smooth heat-to-heat navigation.
  */
 
 import { HELMET_COLORS, EXCLUSION_CODES } from '../models/speedway-rules.js';
