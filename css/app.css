@@ -348,7 +348,8 @@ input, textarea, select {
 
 /* Gate Rider Row Card */
 .gate-rider-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -418,8 +419,8 @@ input, textarea, select {
 }
 
 .rider-info {
-  flex: 1 1 auto;
   min-width: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -431,6 +432,8 @@ input, textarea, select {
   gap: 6px;
   margin-bottom: 2px;
   min-width: 0;
+  width: 100%;
+  flex-wrap: nowrap;
 }
 
 .rider-num-pill {
@@ -440,6 +443,7 @@ input, textarea, select {
   padding: 1px 6px;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
+  flex-shrink: 0;
 }
 
 .rider-name-text {
@@ -450,6 +454,8 @@ input, textarea, select {
   text-overflow: ellipsis;
   min-width: 0;
   flex: 1 1 auto;
+  max-width: 100%;
+  display: block;
 }
 
 .rider-sub-tag {
@@ -460,6 +466,7 @@ input, textarea, select {
   padding: 1px 5px;
   border-radius: 4px;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .rider-meta-row {
@@ -470,6 +477,7 @@ input, textarea, select {
   font-size: 0.75rem;
   color: var(--text-muted);
   min-width: 0;
+  width: 100%;
 }
 
 .rider-meta-row .btn-open-sub {
@@ -481,7 +489,9 @@ input, textarea, select {
   display: flex;
   gap: 5px;
   flex-shrink: 0;
-  margin-left: auto;
+  justify-self: end;
+  margin-left: 0;
+  max-width: 100%;
 }
 
 .pos-btn {
@@ -502,6 +512,25 @@ input, textarea, select {
 
 .pos-btn:active {
   transform: scale(0.92);
+}
+
+@media (max-width: 480px) {
+  .gate-rider-row {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .position-tapper {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .pos-btn {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 .pos-btn.active-1 {
