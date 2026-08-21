@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#090d16"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="trackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background with rounded iOS icon shape -->
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)"/>
+  
+  <!-- Outer glowing rim -->
+  <rect x="12" y="12" width="488" height="488" rx="103" fill="none" stroke="url(#accentGrad)" stroke-width="8" opacity="0.6"/>
+
+  <!-- Speedway Oval Track Silhouette -->
+  <path d="M150 170 C90 170 90 342 150 342 L362 342 C422 342 422 170 362 170 Z" 
+        fill="none" stroke="#334155" stroke-width="48" stroke-linecap="round"/>
+  <path d="M150 170 C90 170 90 342 150 342 L362 342 C422 342 422 170 362 170 Z" 
+        fill="none" stroke="url(#accentGrad)" stroke-width="16" stroke-dasharray="24 16" stroke-linecap="round"/>
+
+  <!-- Helmet Colours 4-Gate Badges (Red, Blue, White, Yellow) -->
+  <g transform="translate(140, 210)">
+    <!-- Red (Gate 1) -->
+    <circle cx="36" cy="46" r="28" fill="#ef4444" stroke="#ffffff" stroke-width="4"/>
+    <text x="36" y="54" font-family="-apple-system, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">1</text>
+
+    <!-- Blue (Gate 2) -->
+    <circle cx="102" cy="46" r="28" fill="#3b82f6" stroke="#ffffff" stroke-width="4"/>
+    <text x="102" y="54" font-family="-apple-system, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">2</text>
+
+    <!-- White (Gate 3) -->
+    <circle cx="168" cy="46" r="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="4"/>
+    <text x="168" y="54" font-family="-apple-system, sans-serif" font-size="24" font-weight="900" fill="#0f172a" text-anchor="middle">3</text>
+
+    <!-- Yellow (Gate 4) -->
+    <circle cx="234" cy="46" r="28" fill="#eab308" stroke="#ffffff" stroke-width="4"/>
+    <text x="234" y="54" font-family="-apple-system, sans-serif" font-size="24" font-weight="900" fill="#000000" text-anchor="middle">4</text>
+  </g>
+
+  <!-- Speedway Checkered Racing Flag Motif -->
+  <g transform="translate(216, 75)">
+    <!-- Flag Wave -->
+    <path d="M 0 0 Q 20 -15, 40 0 T 80 0 L 80 50 Q 60 35, 40 50 T 0 50 Z" fill="#ffffff" opacity="0.9"/>
+    <!-- Black checks -->
+    <path d="M 0 0 Q 20 -15, 40 0 L 40 25 Q 20 10, 0 25 Z" fill="#000000"/>
+    <path d="M 40 25 Q 60 10, 80 25 L 80 50 Q 60 35, 40 50 Z" fill="#000000"/>
+    <!-- Flag pole -->
+    <line x1="0" y1="-10" x2="0" y2="70" stroke="#d97706" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="256" y="420" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="4">SPEEDWAY</text>
+  <text x="256" y="455" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" font-size="20" font-weight="700" fill="#f59e0b" text-anchor="middle" letter-spacing="2">SCORECARD</text>
+</svg>
+

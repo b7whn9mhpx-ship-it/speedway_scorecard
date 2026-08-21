@@ -1,0 +1,49 @@
+{
+  "name": "Speedway Match Scorecard",
+  "short_name": "Speedway Score",
+  "description": "Mobile Progressive Web App for scoring British speedway matches, heat-by-heat grids, rider averages, and gate statistics on iPhone.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#090d16",
+  "theme_color": "#121826",
+  "categories": ["sports", "utilities"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Live Heats",
+      "url": "./index.html#heats",
+      "description": "Open live heat scoring card"
+    },
+    {
+      "name": "Scorecard Grid",
+      "url": "./index.html#scorecard",
+      "description": "View official program scorecard matrix"
+    },
+    {
+      "name": "New Match",
+      "url": "./index.html#setup",
+      "description": "Setup a new British Speedway match"
+    }
+  ]
+}
