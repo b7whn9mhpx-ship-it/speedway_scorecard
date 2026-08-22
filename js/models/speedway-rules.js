@@ -298,7 +298,7 @@ export const BRITISH_15_HEAT_MATRIX = [
   { heat: 1, home: [1, 2], away: [1, 2], note: 'Opening clash' },
   { heat: 2, home: [6, 7], away: [6, 7], note: 'Reserves heat' },
   { heat: 3, home: [3, 4], away: [3, 4], note: 'Middle order' },
-  { heat: 4, home: [5, 7], away: [5, 6], note: 'Heat Leader & Reserve' },
+  { heat: 4, home: [5, 7], away: [5, 7], note: 'Heat Leader & Reserve' },
   { heat: 5, home: [3, 4], away: [1, 2], note: 'Home middle vs Away top' },
   { heat: 6, home: [1, 2], away: [5, 6], note: 'Home top vs Away pairing' },
   { heat: 7, home: [5, 6], away: [3, 4], note: 'Home pairing vs Away middle' },
