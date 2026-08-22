@@ -185,10 +185,14 @@ export class MatchSetupView {
         </div>
 
         <div class="form-group">
-          <label class="form-label">Coin Toss Gates Allocation</label>
-          <select class="form-select" id="input-toss-choice">
-            <option value="inside" ${(match?.tossChoice === 'inside') ? 'selected' : ''}>Home inside (Gates 1 & 3 in odd heats, 2 & 4 in even)</option>
-            <option value="outside" ${(match?.tossChoice === 'outside') ? 'selected' : ''}>Home outside (Gates 2 & 4 in odd heats, 1 & 3 in even)</option>
+          <label class="form-label">Gates Allocation</label>
+          <select class="form-select" id="input-toss-choice1">
+            <option value="home" ${(match?.heat1gates === 'home') ? 'selected' : ''}>Heat 1 Home Team Gates 1 & 3</option>
+            <option value="away" ${(match?.heat1gates === 'away') ? 'selected' : ''}>Heat 1 Away Team Gates 1 & 3</option>
+          </select>
+          <select class="form-select" id="input-toss-choice15">
+            <option value="home" ${(match?.heat15gates === 'home') ? 'selected' : ''}>Heat 15 Home Team Gates 1 & 3</option>
+            <option value="away" ${(match?.heat15gates === 'away') ? 'selected' : ''}>Heat 15 Away Team Gates 1 & 3</option>
           </select>
         </div>
 
@@ -450,7 +454,8 @@ export class MatchSetupView {
         const league = this.container.querySelector('#input-league')?.value || 'SGB Premiership';
         const date = this.container.querySelector('#input-date')?.value || '';
         const referee = this.container.querySelector('#input-referee')?.value || '';
-        const tossChoice = this.container.querySelector('#input-toss-choice')?.value || 'inside';
+        const heat1gates = this.container.querySelector('#input-toss-choice1')?.value || 'home';
+        const heat15gates = this.container.querySelector('#input-toss-choice15')?.value || 'home';
 
         this.app.updateMatchMetadata({
           homeTeamName: homeName,
@@ -459,7 +464,8 @@ export class MatchSetupView {
           league,
           date,
           referee,
-          tossChoice,
+          heat1gates,
+          heat15gates,
         }, true);
 
         this.app.showToast('Match details & rosters updated! 🏁');
@@ -477,14 +483,16 @@ export class MatchSetupView {
           const awayName = this.container.querySelector('#input-away-team')?.value || 'Sheffield Tigers';
           const track = this.container.querySelector('#input-track')?.value || 'National Speedway Stadium';
           const league = this.container.querySelector('#input-league')?.value || 'SGB Premiership';
-          const tossChoice = this.container.querySelector('#input-toss-choice')?.value || 'inside';
+          const heat1gates = this.container.querySelector('#input-toss-choice1')?.value || 'home';
+          const heat15gates = this.container.querySelector('#input-toss-choice15')?.value || 'home';
 
           const newMatch = createNewMatch({
             homeTeamName: homeName,
             awayTeamName: awayName,
             track,
             league,
-            tossChoice,
+            heat1gates,
+            heat15gates,
           });
 
           this.app.setMatch(newMatch);

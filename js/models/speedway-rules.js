@@ -360,8 +360,8 @@ export function createNewMatch({
   referee = '',
   date = new Date().toISOString().split('T')[0],
   time = '19:30',
-  tossWinner = 'home', // 'home' | 'away'
-  tossChoice = 'inside', // 'inside' (Gates 1 & 3 in odd heats) | 'outside' (Gates 2 & 4 in odd heats)
+  heat1gates = 'home', // 'home' | 'away'
+  heat15gates = 'home', // 'home' | 'away'
   homeRoster = null,
   awayRoster = null,
 } = {}) {
@@ -377,7 +377,7 @@ export function createNewMatch({
   // Build the 15 heats
   const heats = BRITISH_15_HEAT_MATRIX.map((template) => {
     const heatNum = template.heat;
-    const gateAssignment = getGateAssignment(heatNum, tossWinner, tossChoice);
+    const gateAssignment = getGateAssignment(heatNum, heat1gates, heat15gates);
 
     const homeRider1Num = template.home[0];
     const homeRider2Num = template.home[1];
@@ -467,8 +467,8 @@ export function createNewMatch({
     referee,
     date,
     time,
-    tossWinner,
-    tossChoice,
+    heat1gates,
+    heat15gates,
     heat15GateChoice: null,
     homeRoster: home,
     awayRoster: away,
@@ -486,23 +486,65 @@ export function getRiderName(roster, number) {
 }
 
 /**
- * Calculates gate positions (1 to 4 from inside to outside) for a heat
- * based on coin toss selection.
+ * Optional per-heat gate overrides.
+ * Edit these values to set custom gate positions for specific heats.
+ * Format: { heatNumber: { home: [gateA, gateB], away: [gateC, gateD] } }
+ * Gate numbers are ordered from inside to outside, so gate 1 is inside and 4 is outside.
  */
-export function getGateAssignment(heatNumber, tossWinner = 'home', tossChoice = 'inside') {
-  const isOdd = heatNumber % 2 === 1;
-  const homeGetsInside = (tossWinner === 'home' && tossChoice === 'inside') ||
-                         (tossWinner === 'away' && tossChoice === 'outside');
+export const HEAT_GATE_A = {
+  1: { home: [3, 1], away: [4, 2] },
+  2: { home: [2, 4], away: [1, 3] },
+  3: { home: [3, 1], away: [2, 4] },
+  4: { home: [3, 1], away: [4, 2] },
+  5: { home: [2, 4], away: [3, 1] },
+  6: { home: [1, 3], away: [2, 4] },
+  7: { home: [2, 4], away: [1, 3] },
+  8: { home: [4, 2], away: [3, 1] },
+  9: { home: [4, 2], away: [1, 3] },
+  10: { home: [4, 2], away: [3, 1] },
+  11: { home: [1, 3], away: [2, 4] },
+  12: { home: [1, 3], away: [4, 2] },
+  13: { home: [2, 4], away: [1, 3] },
+  14: { home: [3, 1], away: [2, 4] },
+};
 
-  if (isOdd) {
-    return homeGetsInside
-      ? { home: [1, 3], away: [2, 4] }
-      : { home: [2, 4], away: [1, 3] };
+export const HEAT_GATE_B = {
+  1: { home: [4, 2], away: [3, 1] },
+  2: { home: [1, 3], away: [2, 4] },
+  3: { home: [4, 2], away: [1, 3] },
+  4: { home: [4, 2], away: [3, 1] },
+  5: { home: [1, 3], away: [4, 2] },
+  6: { home: [2, 4], away: [1, 3] },
+  7: { home: [1, 3], away: [2, 4] },
+  8: { home: [3, 1], away: [4, 2] },
+  9: { home: [3, 1], away: [2, 4] },
+  10: { home: [3, 1], away: [4, 2] },
+  11: { home: [2, 4], away: [1, 3] },
+  12: { home: [2, 4], away: [3, 1] },
+  13: { home: [1, 3], away: [2, 4] },
+  14: { home: [4, 2], away: [1, 3] },
+};
+
+/**
+ * Calculates gate positions (1 to 4 from inside to outside) for a heat.
+ * Uses a per-heat override when provided, otherwise falls back to toss-based logic.
+ */
+export function getGateAssignment(heatNumber, heat1gates = 'home', heat15gates = 'home') {
+  
+  if (heatNumber === 15) {
+    if (heat15gates === 'home') {
+      return { home: [1, 3], away: [2, 4] };
+    } else {
+      return { home: [2, 4], away: [1, 3] };
+    }
   } else {
-    return homeGetsInside
-      ? { home: [2, 4], away: [1, 3] }
-      : { home: [1, 3], away: [2, 4] };
+    if (heat1gates === 'home') {
+      return HEAT_GATE_A[heatNumber];
+    } else {
+      return HEAT_GATE_B[heatNumber];
+    }
   }
+
 }
 
 /**

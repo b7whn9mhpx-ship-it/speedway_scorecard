@@ -192,10 +192,10 @@ export class App {
     }
 
     // If toss choice changed, recalculate gate allocations for all pending heats
-    if (meta.tossChoice && meta.tossChoice !== previousTossChoice) {
+    if (meta.heat15gates && meta.heat15gates !== previousTossChoice) {
       this.currentMatch.heats.forEach((h) => {
         if (!h.isNominated) {
-          const gates = getGateAssignment(h.heatNumber, this.currentMatch.tossWinner, meta.tossChoice);
+          const gates = getGateAssignment(h.heatNumber, this.currentMatch.heat1gates, meta.heat15gates);
           h.riders.forEach((r) => {
             if (r.team === 'home') {
               r.gate = r.helmet === 'red' ? gates.home[0] : gates.home[1];

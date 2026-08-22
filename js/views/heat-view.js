@@ -99,7 +99,7 @@ export class HeatView {
         <div class="heat-meta-tools">
           <div class="time-input-box">
             <span class="text-xs text-muted">⏱️ Time:</span>
-            <input type="number" step="0.01" min="40" max="120" placeholder="58.20"
+            <input type="number" step="0.01" min="40" max="120" placeholder="60.00"
                    value="${currentHeat.timeSeconds || ''}" 
                    id="heat-time-input" 
                    data-heat="${currentHeat.heatNumber}">
