@@ -514,7 +514,7 @@ input, textarea, select {
   transform: scale(0.92);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .gate-rider-row {
     grid-template-columns: auto minmax(0, 1fr);
     align-items: start;
