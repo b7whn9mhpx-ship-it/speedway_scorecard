@@ -233,6 +233,25 @@ export class App {
     this.renderCurrentView();
   }
 
+  resetCurrentMatch() {
+    const fresh = createNewMatch({
+      homeTeamName: this.currentMatch?.homeTeamName || 'Belle Vue Aces',
+      awayTeamName: this.currentMatch?.awayTeamName || 'Sheffield Tigers',
+      track: this.currentMatch?.track || 'National Speedway Stadium',
+      league: this.currentMatch?.league || 'SGB Premiership',
+      heat1gates: this.currentMatch?.heat1gates || 'home',
+      heat15gates: this.currentMatch?.heat15gates || 'home',
+      homeRoster: this.currentMatch?.homeRoster || null,
+      awayRoster: this.currentMatch?.awayRoster || null,
+    });
+
+    this.currentMatch = calculateMatchTotals(fresh);
+    storageService.saveCurrentMatch(this.currentMatch, false);
+    this.updateHeaderScoreboard();
+    this.renderCurrentView();
+    this.showToast('Fresh heat schedule loaded 🏁');
+  }
+
   loadMatch(id) {
     const loaded = storageService.loadMatchById(id);
     if (loaded) {

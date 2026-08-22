@@ -203,6 +203,9 @@ export class MatchSetupView {
           <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl border border-slate-700" id="btn-start-new-match">
             Start New Match with Selected Teams
           </button>
+          <button class="w-full bg-red-900/50 hover:bg-red-900/70 text-red-200 font-bold py-3 rounded-xl border border-red-700/70" id="btn-reset-current-match">
+            Reset Current Match Schedule
+          </button>
         </div>
       </div>
     `;
@@ -498,6 +501,16 @@ export class MatchSetupView {
           this.app.setMatch(newMatch);
           this.app.setActiveTab('heats');
           this.app.showToast(`New match ready: ${homeName} vs ${awayName}! 🏁`);
+        }
+      });
+    }
+
+    const resetCurrentMatchBtn = this.container.querySelector('#btn-reset-current-match');
+    if (resetCurrentMatchBtn) {
+      resetCurrentMatchBtn.addEventListener('click', () => {
+        if (confirm('Reset the current match schedule to the default programmed heat matrix?')) {
+          this.app.resetCurrentMatch();
+          this.app.setActiveTab('heats');
         }
       });
     }

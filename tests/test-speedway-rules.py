@@ -110,6 +110,7 @@ def run_tests():
             app_content = f.read()
             assert 'setTeam' in app_content
             assert 'getRosterForTeam' in app_content
+            assert 'resetCurrentMatch' in app_content
             print("✓ App Controller setTeam & roster synchronization verified")
     except Exception as e:
         errors.append(f"App content error: {str(e)}")
@@ -124,6 +125,7 @@ def run_tests():
             assert 'btn-set-home-preset' in setup_content
             assert 'btn-set-away-preset' in setup_content
             assert 'btn-reset-team-roster' in setup_content
+            assert 'btn-reset-current-match' in setup_content
             print("✓ Match Setup View team selectors and roster controls verified")
     except Exception as e:
         errors.append(f"Setup view content error: {str(e)}")
